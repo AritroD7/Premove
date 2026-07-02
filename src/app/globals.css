@@ -1,26 +1,212 @@
 @import "tailwindcss";
 
+/*
+  Premove — "Midnight Board" theme.
+  A private-first chess preparation cockpit: charcoal/midnight layered
+  surfaces, soft ivory typography, emerald/teal accents, amber highlights,
+  a faint chessboard texture and move-trace glow accents.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Layered surfaces (darkest → soft) */
+  --background: #07080d;
+  --background-deep: #0d111a;
+  --background-elevated: #111827;
+  --background-soft: #151b26;
+
+  /* Typography */
+  --foreground: #f5f2e8; /* soft ivory */
+  --secondary: #a7b0c0; /* secondary text */
+  --muted: #6b7280; /* muted text */
+
+  /* Brand accents */
+  --emerald: #34d399;
+  --teal: #2dd4bf;
+  --amber: #f2c879;
+  --danger: #f2748a;
+
+  /* Aliases kept for existing components */
+  --muted-strong: var(--secondary);
+  --accent: var(--emerald);
+  --accent-strong: var(--teal);
+  --gold: var(--amber);
+
+  /* Lines & glass */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --glass: rgba(17, 24, 39, 0.55);
+  --glass-strong: rgba(21, 27, 38, 0.82);
+
+  --radius: 1rem;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-deep: var(--background-deep);
+  --color-background-elevated: var(--background-elevated);
+  --color-background-soft: var(--background-soft);
+
   --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-emerald: var(--emerald);
+  --color-teal: var(--teal);
+  --color-amber: var(--amber);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-gold: var(--gold);
+  --color-danger: var(--danger);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --radius-xl: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  position: relative;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Layered ambient glows in emerald / teal / amber */
+  background-image:
+    radial-gradient(
+      48rem 48rem at 6% -8%,
+      rgba(52, 211, 153, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      44rem 44rem at 100% 2%,
+      rgba(45, 212, 191, 0.08),
+      transparent 58%
+    ),
+    radial-gradient(
+      60rem 55rem at 50% 120%,
+      rgba(242, 200, 121, 0.05),
+      transparent 60%
+    );
+  background-attachment: fixed;
+}
+
+/* Elegant, subtle scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 176, 192, 0.22) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(167, 176, 192, 0.2);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(167, 176, 192, 0.32);
+}
+
+/* ── Surfaces ─────────────────────────────────────────────── */
+
+@utility glass-card {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0) 45%
+    ),
+    linear-gradient(160deg, var(--glass-strong), var(--glass));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 48px -32px rgba(0, 0, 0, 0.9);
+}
+
+/* Faint chessboard texture — apply to a fixed/absolute decorative layer */
+@utility chessboard-texture {
+  background-image: conic-gradient(
+    from 90deg at 50% 50%,
+    rgba(245, 242, 232, 0.022) 0deg 90deg,
+    transparent 90deg 180deg,
+    rgba(245, 242, 232, 0.022) 180deg 270deg,
+    transparent 270deg 360deg
+  );
+  background-size: 96px 96px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 70% at 50% 0%,
+    #000 0%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 0%, transparent 78%);
+}
+
+/* ── Move-trace decorative glow (knight L-path feel) ──────── */
+
+@utility move-trace {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(52, 211, 153, 0.5) 0 8px,
+    transparent 8px 16px
+  );
+  filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.35));
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* ── Motion ───────────────────────────────────────────────── */
+
+@keyframes premove-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: premove-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes premove-trace {
+  0% {
+    stroke-dashoffset: 60;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@utility animate-trace {
+  animation: premove-trace 3.4s ease-in-out infinite;
 }

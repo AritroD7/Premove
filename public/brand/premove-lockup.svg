@@ -1,0 +1,43 @@
+<svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Premove Logo Lockup</title>
+  <desc id="desc">Premove wordmark with Ghost Move logo mark and tagline Prepare before move one.</desc>
+  <defs>
+    <linearGradient id="move" x1="75" y1="250" x2="260" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2C879"/>
+      <stop offset="0.42" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="ivory" x1="70" y1="40" x2="320" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8E7"/>
+      <stop offset="1" stop-color="#D9C7A7"/>
+    </linearGradient>
+    <filter id="glowTeal" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.18 0 0 0 0 0.83 0 0 0 0 0.75 0 0 0 0.5 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+    <filter id="glowAmber" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.95 0 0 0 0 0.78 0 0 0 0 0.38 0 0 0 0.55 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- mark scaled inline -->
+  <g transform="translate(36 38) scale(0.6)">
+    <rect x="105" y="214" width="64" height="64" fill="#151B26" stroke="rgba(245,242,232,0.12)"/>
+    <rect x="169" y="214" width="64" height="64" fill="#0D111A" stroke="rgba(245,242,232,0.10)"/>
+    <rect x="105" y="278" width="64" height="64" fill="#0D111A" stroke="rgba(245,242,232,0.10)"/>
+    <rect x="169" y="278" width="64" height="64" fill="#151B26" stroke="rgba(245,242,232,0.12)"/>
+    <rect x="233" y="214" width="64" height="64" fill="#111827" opacity="0.7" stroke="rgba(245,242,232,0.08)"/>
+    <rect x="233" y="278" width="64" height="64" fill="#0D111A" opacity="0.7" stroke="rgba(245,242,232,0.08)"/>
+    <path d="M105 178V86H286C362 86 415 137 415 208C415 279 362 330 286 330H235" stroke="url(#ivory)" stroke-width="34" stroke-linecap="square" stroke-linejoin="round"/>
+    <path d="M105 178H286C326 178 352 195 352 225C352 255 326 272 286 272H238" stroke="#07080D" stroke-width="34" stroke-linecap="square" stroke-linejoin="round" opacity="0.98"/>
+    <path d="M137 371C179 329 219 292 252 252C287 211 318 167 363 128" stroke="url(#move)" stroke-width="16" stroke-linecap="round" opacity="0.92" filter="url(#glowTeal)"/>
+    <rect x="116" y="351" width="42" height="42" fill="#07080D" stroke="#F2C879" stroke-width="5" filter="url(#glowAmber)"/>
+    <rect x="345" y="111" width="48" height="48" fill="#34D399" fill-opacity="0.75" stroke="#BDFBEA" stroke-width="3" filter="url(#glowTeal)"/>
+  </g>
+
+  <text x="330" y="178" fill="#F5F2E8" font-size="118" font-family="Georgia, 'Times New Roman', serif" letter-spacing="-3">Premove</text>
+  <text x="337" y="240" fill="#34D399" font-size="28" font-family="Inter, Arial, sans-serif" letter-spacing="8" opacity="0.9">PREPARE BEFORE MOVE ONE.</text>
+</svg>

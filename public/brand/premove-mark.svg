@@ -1,0 +1,47 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Premove Logo Mark</title>
+  <desc id="desc">A stylized P with a chessboard grid and a glowing premove path.</desc>
+  <defs>
+    <linearGradient id="move" x1="150" y1="360" x2="360" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2C879"/>
+      <stop offset="0.42" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="ivory" x1="90" y1="70" x2="420" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8E7"/>
+      <stop offset="1" stop-color="#D9C7A7"/>
+    </linearGradient>
+    <filter id="glowTeal" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.18 0 0 0 0 0.83 0 0 0 0 0.75 0 0 0 0.55 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+    <filter id="glowAmber" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.95 0 0 0 0 0.78 0 0 0 0 0.38 0 0 0 0.6 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- subtle board block -->
+  <g opacity="0.9">
+    <rect x="105" y="214" width="64" height="64" fill="#151B26" stroke="rgba(245,242,232,0.12)"/>
+    <rect x="169" y="214" width="64" height="64" fill="#0D111A" stroke="rgba(245,242,232,0.10)"/>
+    <rect x="105" y="278" width="64" height="64" fill="#0D111A" stroke="rgba(245,242,232,0.10)"/>
+    <rect x="169" y="278" width="64" height="64" fill="#151B26" stroke="rgba(245,242,232,0.12)"/>
+    <rect x="233" y="214" width="64" height="64" fill="#111827" opacity="0.7" stroke="rgba(245,242,232,0.08)"/>
+    <rect x="233" y="278" width="64" height="64" fill="#0D111A" opacity="0.7" stroke="rgba(245,242,232,0.08)"/>
+  </g>
+
+  <!-- stylized P stroke -->
+  <path d="M105 178V86H286C362 86 415 137 415 208C415 279 362 330 286 330H235" stroke="url(#ivory)" stroke-width="34" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M105 178H286C326 178 352 195 352 225C352 255 326 272 286 272H238" stroke="#07080D" stroke-width="34" stroke-linecap="square" stroke-linejoin="round" opacity="0.98"/>
+
+  <!-- premove trace -->
+  <path d="M137 371C179 329 219 292 252 252C287 211 318 167 363 128" stroke="url(#move)" stroke-width="16" stroke-linecap="round" opacity="0.92" filter="url(#glowTeal)"/>
+  <path d="M141 369C182 329 220 294 252 254C286 212 319 170 359 133" stroke="#071014" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- start and destination squares -->
+  <rect x="116" y="351" width="42" height="42" fill="#07080D" stroke="#F2C879" stroke-width="5" filter="url(#glowAmber)"/>
+  <rect x="345" y="111" width="48" height="48" fill="#34D399" fill-opacity="0.75" stroke="#BDFBEA" stroke-width="3" filter="url(#glowTeal)"/>
+</svg>
